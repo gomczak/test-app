@@ -1,0 +1,28 @@
+services:
+  app:
+    build:
+      context: .
+    container_name: test-app
+    ports:
+      - 3000:3000
+    environment:
+      PORT: ${PORT}
+      MONGODB_URI: ${MONGODB_URI}
+    env_file:
+      - ./.env
+    depends_on:
+      - mongodb
+    networks:
+      - test-app
+
+  mongodb:
+    image: mongo
+    restart: always
+    container_name: mongodb
+    env_file:
+      - ./.env
+    networks:
+      - test-app
+
+networks:
+  test-app:
