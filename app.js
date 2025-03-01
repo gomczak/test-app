@@ -1,5 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const authRoutes = require('./routes/authRoutes');
+const path = require('path');
 require('dotenv').config();
 
 const app = express();
@@ -8,6 +10,7 @@ const app = express();
 app.use(express.static('public'));
 
 // view engine
+app.set('views', [path.join(__dirname, 'views'), path.join(__dirname, 'views/partials')]);
 app.set('view engine', 'ejs');
 
 // database connection
@@ -18,3 +21,4 @@ mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTop
 // routes
 app.get('/', (req, res) => res.render('home'));
 app.get('/smoothies', (req, res) => res.render('smoothies'));
+app.use(authRoutes);
