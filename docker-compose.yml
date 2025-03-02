@@ -14,6 +14,10 @@ services:
       - mongodb
     networks:
       - test-app
+    develop:
+      watch:
+        - action: rebuild
+          path: ./
 
   mongodb:
     image: mongo
