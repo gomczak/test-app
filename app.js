@@ -8,6 +8,7 @@ const app = express();
 
 // middleware
 app.use(express.static('public'));
+app.use(express.json());
 
 // view engine
 app.set('views', [path.join(__dirname, 'views'), path.join(__dirname, 'views/partials')]);
