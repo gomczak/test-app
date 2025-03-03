@@ -15,7 +15,7 @@ app.set('views', [path.join(__dirname, 'views'), path.join(__dirname, 'views/par
 app.set('view engine', 'ejs');
 
 // database connection
-mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
+mongoose.connect(process.env.MONGODB_URI)
   .then((result) => app.listen(process.env.PORT))
   .catch((err) => console.log(err));
 
