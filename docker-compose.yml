@@ -8,8 +8,6 @@ services:
     environment:
       PORT: ${PORT}
       MONGODB_URI: ${MONGODB_URI}
-    env_file:
-      - ./.env
     depends_on:
       - mongodb
     networks:
