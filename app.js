@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const authRoutes = require('./routes/authRoutes');
 const path = require('path');
+const cookieParser = require('cookie-parser');
 require('dotenv').config();
 
 const app = express();
@@ -9,6 +10,7 @@ const app = express();
 // middleware
 app.use(express.static('public'));
 app.use(express.json());
+app.use(cookieParser());
 
 // view engine
 app.set('views', [path.join(__dirname, 'views'), path.join(__dirname, 'views/partials')]);
