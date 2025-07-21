@@ -68,9 +68,3 @@ docker run --rm --name test-app-container \
   --network test-app \
   test-app
 ```
-
-### Why Docker?
-
-- **Consistency:** Ensures the app runs identically in all environments (dev, test, CI, production).
-- **CI Integration:** The app is designed for easy use in CI/CD pipelines, essential for modern automated testing strategies, including support for Docker-in-Docker as required by [playwright-tests](https://github.com/gomczak/playwright-tests).
-- **Simple Setup:** Quickly spin up the entire stack with single commands, no manual dependency management.
