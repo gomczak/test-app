@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const authRoutes = require('./routes/authRoutes');
 const path = require('path');
 const cookieParser = require('cookie-parser');
-const { requireAuth } = require('./middleware/authMiddleware');
+const { requireAuth, checkUser } = require('./middleware/authMiddleware');
 require('dotenv').config();
 
 const app = express();
@@ -23,6 +23,7 @@ mongoose.connect(process.env.MONGODB_URI)
   .catch((err) => console.log(err));
 
 // routes
+app.get('*', checkUser);
 app.get('/', (req, res) => res.render('home'));
 app.get('/smoothies', requireAuth, (req, res) => res.render('smoothies'));
 app.use(authRoutes);
